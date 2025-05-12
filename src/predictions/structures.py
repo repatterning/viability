@@ -1,0 +1,44 @@
+import pandas as pd
+
+import src.elements.master as mr
+import src.elements.structures as st
+
+
+class Structures:
+
+    def __init__(self, master: mr.Master, arguments: dict):
+
+        self.__master = master
+        self.__arguments = arguments
+
+        # Estimates
+        estimates = master.estimates
+        estimates['date'] = pd.to_datetime(estimates['milliseconds'], unit='ms')
+        self.__estimates = estimates.sort_values(by='date', ascending=True, inplace=False)
+
+    def __training(self):
+
+        training = self.__master.training
+        training['date'] = pd.to_datetime(training['timestamp'], unit='s')
+
+        data = training[['date']].merge(self.__estimates, how='left', on='date')
+
+        return data
+
+    def __testing(self):
+
+        testing = self.__master.testing
+        testing['date'] = pd.to_datetime(testing['timestamp'], unit='s')
+
+        data = testing[['date']].merge(self.__estimates, how='left', on='date')
+
+        return data
+
+    def __futures(self):
+
+        return self.__estimates[-self.__arguments.get('ahead'):]
+
+    def exc(self) -> st.Structures:
+
+        return st.Structures(
+            training=self.__training(), testing=self.__testing(), futures=self.__futures())
