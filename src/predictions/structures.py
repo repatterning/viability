@@ -13,13 +13,14 @@ class Structures:
 
         # Estimates
         estimates = master.estimates
-        estimates['date'] = pd.to_datetime(estimates['milliseconds'], unit='ms')
+        estimates['date'] = pd.to_datetime(estimates['milliseconds'], unit='us')
+        estimates.drop(columns='milliseconds', inplace=True)
         self.__estimates = estimates.sort_values(by='date', ascending=True, inplace=False)
 
     def __training(self):
 
         training = self.__master.training
-        training['date'] = pd.to_datetime(training['timestamp'], unit='s')
+        training['date'] = pd.to_datetime(training['timestamp'], unit='ms')
 
         data = training[['date']].merge(self.__estimates, how='left', on='date')
 
@@ -28,7 +29,7 @@ class Structures:
     def __testing(self):
 
         testing = self.__master.testing
-        testing['date'] = pd.to_datetime(testing['timestamp'], unit='s')
+        testing['date'] = pd.to_datetime(testing['timestamp'], unit='ms')
 
         data = testing[['date']].merge(self.__estimates, how='left', on='date')
 
