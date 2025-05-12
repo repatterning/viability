@@ -20,7 +20,7 @@ class Errors:
         estimates = data[['median', 'lower_w', 'upper_w']].to_numpy()
 
         data.loc[:, ['error', 'error_l', 'error_u']] = estimates - data['observation'].to_numpy()[:,None]
-        data['p_error'] = 100*np.true_divide(data['error'].to_numpy(), data['measure'].to_numpy())
+        data['p_error'] = 100*np.true_divide(data['error'].to_numpy(), data['observation'].to_numpy())
 
         return data
 
