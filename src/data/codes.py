@@ -1,5 +1,4 @@
 """Module codes.py"""
-import logging
 import glob
 import os
 import pathlib
@@ -21,20 +20,6 @@ class Codes:
 
         self.__configurations = config.Config()
 
-
-    @staticmethod
-    def __re_cut(string: str) -> str:
-        """
-
-        :param string: A path string
-        :return:
-        """
-
-        string = string.rstrip(os.sep)
-        values = string.split(sep=os.sep)
-
-        return values[-2] + os.sep + values[-1]
-
     def __get_codes(self) -> list[str] | None:
         """
 
@@ -42,8 +27,6 @@ class Codes:
         """
 
         listings = glob.glob(pathname=os.path.join(self.__configurations.data_, '**', '**'))
-        logging.info(listings)
-
 
         codes = []
         for listing in listings:
