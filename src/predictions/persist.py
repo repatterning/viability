@@ -1,5 +1,4 @@
 """Module boundaries.py"""
-import logging
 import json
 import os
 
@@ -60,13 +59,10 @@ class Persist:
         :return:
         """
 
-        logging.info(structures.training)
-        logging.info(structures.testing)
-
         nodes = {
-            'training': self.__get_node(structures.training),
-            'testing': self.__get_node(structures.testing),
-            'futures': self.__get_node(structures.futures)}
+            'training': self.__get_node(structures.training.drop(columns='error')),
+            'testing': self.__get_node(structures.testing.drop(columns='error')),
+            'futures': self.__get_node(structures.futures.drop(columns='observations'))}
         nodes.update(specifications._asdict())
 
         return self.__persist(nodes=nodes, name=str(specifications.ts_id))
