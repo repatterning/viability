@@ -72,7 +72,7 @@ class Interface:
             structures = __get_errors(structures=structures)
             _measures = __persist(structures=structures, specifications=specifications)
             _metrics = __get_metrics(structures=structures, specifications=specifications)
-            computations.append(f'{_measures}|{_metrics}')
+            computations.append([_measures, _metrics])
 
         messages = dask.compute(computations, scheduler='threads')[0]
         logging.info(messages)
