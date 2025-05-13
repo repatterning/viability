@@ -1,6 +1,5 @@
 """Module interface.py"""
 import logging
-import os
 
 import boto3
 import pandas as pd
@@ -55,7 +54,6 @@ class Interface:
 
         return frame
 
-
     def exc(self):
         """
 
@@ -66,14 +64,9 @@ class Interface:
         strings = self.__dictionary.exc(
             path=self.__configurations.variational_, extension='json',
             prefix=self.__configurations.prefix)
-        logging.info(strings)
 
         strings = self.__get_metadata(frame=strings.copy())
         logging.info(strings)
-
-        '''
-        # Adding metadata details per instance
-        
 
         # Prepare the S3 (Simple Storage Service) section
         src.transfer.initial.Initial(
@@ -84,6 +77,3 @@ class Interface:
             service=self.__service, bucket_name=self.__s3_parameters.external).exc(
             strings=strings, tagging='project=hydrography')
         logging.info(messages)
-        '''
-
-
