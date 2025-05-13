@@ -26,12 +26,9 @@ class Config:
         self.data_ = os.path.join(os.getcwd(), 'data')
         self.warehouse = os.path.join(os.getcwd(), 'warehouse')
 
-        sections = ['warehouse', 'variational']
         self.variational_ = os.path.join(self.warehouse, 'variational')
         self.points_ = os.path.join(self.variational_, 'points')
         self.menu_ = os.path.join(self.variational_, 'menu')
-
-        self.prefix = '/'.join(sections)
 
         # The model assets section
         self.origin = 'assets' + '/' + 'variational' + '/' + self.stamp
@@ -39,3 +36,6 @@ class Config:
         # Keys, etc
         self.s3_parameters_key = 's3_parameters.yaml'
         self.metadata_ = 'external/metadata/variational'
+
+        sections = ['warehouse', 'variational']
+        self.prefix = '/'.join(sections)
