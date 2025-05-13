@@ -25,6 +25,9 @@ class Interface:
     def __get_arguments(connector: boto3.session.Session) -> dict:
         """
 
+        :param connector:
+            <a href='https://boto3.amazonaws.com/v1/documentation/api/latest/guide/session.html#custom-session'>
+            A boto3 custom session.</a><br>
         :return:
         """
 
