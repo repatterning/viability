@@ -6,11 +6,13 @@ import pandas as pd
 
 class Structures(typing.NamedTuple):
     """
-    The data type class ⇾ Structures
+    The data type class ⇾ Structures<br><br>
 
-    Attributes
-    ----------
-
+    Attributes<br>
+    ----------<br>
+    training<br>
+    testing<br>
+    futures<br>
     """
 
     training: pd.DataFrame
