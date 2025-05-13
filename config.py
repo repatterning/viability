@@ -20,21 +20,21 @@ class Config:
 
         now = datetime.datetime.now()
         self.stamp = now.strftime('%Y-%m-%d')
-
-        # Temporary
-        self.stamp = '2025-05-11'
         logging.info(self.stamp)
 
         # Directories
         self.data_ = os.path.join(os.getcwd(), 'data')
         self.warehouse = os.path.join(os.getcwd(), 'warehouse')
 
+        sections = ['warehouse', 'variational']
         self.variational_ = os.path.join(self.warehouse, 'variational')
         self.points_ = os.path.join(self.variational_, 'points')
         self.menu_ = os.path.join(self.variational_, 'menu')
 
+        self.prefix = '/'.join(sections)
+
         # The model assets section
-        self.prefix = 'assets' + '/' + 'variational' + '/' + self.stamp
+        self.origin = 'assets' + '/' + 'variational' + '/' + self.stamp
 
         # Keys, etc
         self.s3_parameters_key = 's3_parameters.yaml'
