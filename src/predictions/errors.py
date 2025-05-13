@@ -7,6 +7,9 @@ import src.elements.structures as st
 
 
 class Errors:
+    """
+    Errors
+    """
 
     def __init__(self):
         pass
@@ -15,7 +18,7 @@ class Errors:
     def __get_errors(data: pd.DataFrame) -> pd.DataFrame:
         """
 
-        :param data:
+        :param data: A training or testing data set.
         :return:
         """
 
@@ -33,7 +36,7 @@ class Errors:
     def exc(self, structures: st.Structures):
         """
 
-        :param structures:
+        :param structures: Refer to src/elements/structures.py
         :return:
         """
 
