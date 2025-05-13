@@ -22,8 +22,8 @@ class Structures:
 
         # Estimates
         estimates = master.estimates
-        estimates['date'] = pd.to_datetime(estimates['milliseconds'], unit='us')
-        estimates.drop(columns='milliseconds', inplace=True)
+        estimates['date'] = pd.to_datetime(estimates['timestamp'], unit='us')
+        estimates.drop(columns='timestamp', inplace=True)
         self.__estimates = estimates.sort_values(by='date', ascending=True, inplace=False)
 
     def __training(self):
