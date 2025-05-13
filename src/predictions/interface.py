@@ -11,8 +11,8 @@ import src.elements.structures as st
 import src.functions.directories
 import src.predictions.data
 import src.predictions.errors
-import src.predictions.persist
 import src.predictions.metrics
+import src.predictions.persist
 import src.predictions.structures
 
 
@@ -29,6 +29,7 @@ class Interface:
 
         self.__arguments = arguments
 
+        # Configurations
         self.__configurations = config.Config()
 
     def __directories(self):
@@ -45,6 +46,11 @@ class Interface:
 
     @dask.delayed
     def __get_structures(self, master: mr.Master) -> st.Structures:
+        """
+
+        :param master:
+        :return:
+        """
 
         return src.predictions.structures.Structures(
             master=master, arguments=self.__arguments).exc()
