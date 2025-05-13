@@ -20,6 +20,8 @@ def main():
     # Assets
     src.assets.Assets(s3_parameters=s3_parameters).exc()
     specifications_ = src.data.interface.Interface(s3_parameters=s3_parameters).exc()
+
+    # Evaluating predictions
     src.predictions.interface.Interface(arguments=arguments).exc(specifications_=specifications_)
 
     # Transfer
