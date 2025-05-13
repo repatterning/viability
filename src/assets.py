@@ -32,7 +32,7 @@ class Assets:
         # Setting up
         self.__configurations = config.Config()
         self.__source_bucket = self.__s3_parameters.internal
-        self.__prefix = self.__configurations.prefix
+        self.__origin = self.__configurations.origin
 
         # Directives
         self.__directives = src.s3.directives.Directives()
@@ -45,7 +45,7 @@ class Assets:
 
         try:
             return self.__directives.unload(
-                source_bucket=self.__source_bucket, origin=self.__prefix, target=self.__configurations.data_)
+                source_bucket=self.__source_bucket, origin=self.__origin, target=self.__configurations.data_)
         except RuntimeError as err:
             raise err from err
 
