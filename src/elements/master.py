@@ -6,10 +6,10 @@ import pandas as pd
 
 class Master(typing.NamedTuple):
     """
-    The data type class ⇾ Master
+    The data type class ⇾ Master<br><br>
 
-    Attributes
-    ----------
+    Attributes<br>
+    ----------<br>
     estimates<br>
     training<br>
     testing<br>
