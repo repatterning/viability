@@ -21,9 +21,12 @@ class Interface:
     def __init__(self, connector: boto3.session.Session, service: sr.Service,  s3_parameters: s3p):
         """
 
-        :param service: A suite of services for interacting with Amazon Web Services.
+        :param connector:
+            <a href='https://boto3.amazonaws.com/v1/documentation/api/latest/guide/session.html#custom-session'>
+            A boto3 custom session.</a><br>
+        :param service: A suite of services for interacting with Amazon Web Services.<br>
         :param s3_parameters: The overarching S3 parameters settings of this
-                              project, e.g., region code name, buckets, etc.
+                              project, e.g., region code name, buckets, etc.<br>
         """
 
         self.__service: sr.Service = service
@@ -63,7 +66,7 @@ class Interface:
         # The strings for transferring data to Amazon S3 (Simple Storage Service)
         strings = self.__dictionary.exc(
             path=self.__configurations.variational_, extension='json',
-            prefix=self.__configurations.prefix)
+            prefix=self.__configurations.prefix + '/')
 
         strings = self.__get_metadata(frame=strings.copy())
         logging.info(strings)
