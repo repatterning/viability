@@ -6,8 +6,8 @@ import numpy as np
 import pandas as pd
 
 import config
-import src.elements.structures as st
 import src.elements.specifications as se
+import src.elements.structures as st
 import src.functions.objects
 
 
