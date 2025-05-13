@@ -1,4 +1,4 @@
-name: 'Hydrography: Evaluating github.com/variational'
+name: 'Hydrography: Evaluating github.com/repatterning/variational'
 
 on: [push]
 
