@@ -54,7 +54,7 @@ class Persist:
     def exc(self, structures: st.Structures, specifications: se.Specifications) -> str:
         """
 
-        :param structures:
+        :param structures: 
         :param specifications:
         :return:
         """
@@ -62,7 +62,7 @@ class Persist:
         nodes = {
             'training': self.__get_node(structures.training.drop(columns='error')),
             'testing': self.__get_node(structures.testing.drop(columns='error')),
-            'futures': self.__get_node(structures.futures.drop(columns='observations'))}
+            'futures': self.__get_node(structures.futures.drop(columns='observation'))}
         nodes.update(specifications._asdict())
 
         return self.__persist(nodes=nodes, name=str(specifications.ts_id))
