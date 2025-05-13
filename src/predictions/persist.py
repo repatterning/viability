@@ -43,8 +43,8 @@ class Persist:
     def __persist(self, nodes: dict, name: str) -> str:
         """
 
-        :param nodes:
-        :param name:
+        :param nodes: Dictionary of data.
+        :param name: A name for the file.
         :return:
         """
 
@@ -54,8 +54,8 @@ class Persist:
     def exc(self, structures: st.Structures, specifications: se.Specifications) -> str:
         """
 
-        :param structures: 
-        :param specifications:
+        :param structures: Refer to src/elements/structures.py
+        :param specifications: Refer to src/elements/specifications.py
         :return:
         """
 
