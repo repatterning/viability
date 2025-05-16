@@ -35,7 +35,8 @@ class Config:
 
         # Keys, etc
         self.s3_parameters_key = 's3_parameters.yaml'
-        self.metadata_ = 'external/metadata/variational'
+        self.argument_key = 'artefacts' + '/' + 'architecture' + '/' + 'variational' + '/' + 'arguments.json'
+        self.metadata_ = 'viability/external'
 
-        sections = ['warehouse', 'variational']
-        self.prefix = '/'.join(sections)
+        # Prefix
+        self.prefix = 'warehouse' + '/' + 'variational'
