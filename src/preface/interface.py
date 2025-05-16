@@ -4,6 +4,7 @@ import typing
 
 import boto3
 
+import config
 import src.elements.s3_parameters as s3p
 import src.elements.service as sr
 import src.functions.cache
@@ -19,10 +20,13 @@ class Interface:
     """
 
     def __init__(self):
-        pass
+        """
+        Constructor
+        """
 
-    @staticmethod
-    def __get_arguments(connector: boto3.session.Session) -> dict:
+        self.__configurations = config.Config()
+
+    def __get_arguments(self, connector: boto3.session.Session) -> dict:
         """
 
         :param connector:
@@ -31,7 +35,7 @@ class Interface:
         :return:
         """
 
-        key_name = 'artefacts' + '/' + 'architecture' + '/' + 'variational' + '/' + 'arguments.json'
+        key_name = self.__configurations.argument_key
 
         return src.s3.configurations.Configurations(connector=connector).objects(key_name=key_name)
 
