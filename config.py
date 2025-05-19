@@ -18,10 +18,6 @@ class Config:
         excluded for names such as warehouse, storage, depository, etc.<br><br>
         """
 
-        now = datetime.datetime.now()
-        self.stamp = now.strftime('%Y-%m-%d')
-        logging.info(self.stamp)
-
         # Directories
         self.data_ = os.path.join(os.getcwd(), 'data')
         self.warehouse = os.path.join(os.getcwd(), 'warehouse')
@@ -31,7 +27,7 @@ class Config:
         self.menu_ = os.path.join(self.variational_, 'menu')
 
         # The model assets section
-        self.origin = 'assets' + '/' + 'variational' + '/' + self.stamp
+        self.origin_ = 'assets/variational/{stamp}'
 
         # Keys, etc
         self.s3_parameters_key = 's3_parameters.yaml'
