@@ -4,15 +4,15 @@ import logging
 import os
 import sys
 
-import datetime
+import numpy as np
 
 import config
 import src.elements.s3_parameters as s3p
 import src.elements.service as sr
 import src.functions.cache
 import src.s3.directives
-import src.s3.unload
 import src.s3.keys
+import src.s3.unload
 
 
 class Assets:
@@ -44,20 +44,22 @@ class Assets:
 
     def __get_origin(self) -> str:
         """
-        elements = src.s3.keys.Keys(service=self.__service, bucket_name=self.__s3_parameters.internal).excerpt(prefix='assets/variational')
+        now = datetime.datetime.now()
+        offset = (now.weekday() - 0) % 7
+        monday = now - datetime.timedelta(days=offset)
+        stamp: str = monday.strftime('%Y-%m-%d')
+
+        :return:
+        """
+
+        elements = src.s3.keys.Keys(service=self.__service, bucket_name=self.__s3_parameters.internal).excerpt(
+            prefix='assets/variational/', delimiter='/')
         keys = [element.split('/', maxsplit=3)[2] for element in elements]
         strings = list(set(keys))
         values = np.array(strings, dtype='datetime64')
         stamp = str(values.max())
 
-        :return:
-        """
-
-        now = datetime.datetime.now()
-        offset = (now.weekday() - 0) % 7
-        monday = now - datetime.timedelta(days=offset)
-        stamp: str = monday.strftime('%Y-%m-%d')
-        logging.info(stamp)
+        logging.info('Latest: %s', stamp)
 
         return self.__configurations.origin_.format(stamp=stamp)
 
